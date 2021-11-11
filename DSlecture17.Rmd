@@ -230,6 +230,12 @@ weather_nest =
 weather_nest$models
 ```
 
+#output = map2(.x = input_1, .y = input_2, ~func(arg_1 = .x, arg_2 = .y))
 
-
+dynamite_reviews = 
+  tibble(
+    page = 1:5,
+    urls = str_c(url_base, page)) %>% 
+  mutate(reviews = map(urls, read_page_reviews)) %>% 
+  unnest()
 
